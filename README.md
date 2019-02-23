@@ -19,3 +19,11 @@ Wanshih Doppler Radar with BLE detect &amp; send system background notification
 #### Notification Helper
 * extra setting of Android Notification/channel setting.
 * send a notificaiton with system date time stamp.
+
+###Broadcast system
+* ble receive characteristic changed send broadcast to RadarData activity to update UI/graph.
+* User update speed thershold at Radar Data activity.If changed, send broadcast to Notification service. 
+* ble receive characteristic changed send broadcast to Notification service to check if over speed thershold
+ˊˊˊ
+so
+ˊˊˊ
