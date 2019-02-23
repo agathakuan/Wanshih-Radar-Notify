@@ -2,12 +2,12 @@
 Wanshih Doppler Radar with BLE detect &amp; send system background notification
 
 ## application structure
-###Activities:
+### Activities:
  - Main Activity: 
  - user set system notification setting/channel setting.
  - start BLE scan, then switch to Device scan Activity.
  
  - DeviceScanActivity
  
- - Services:
+### Services:
  - System-permission Helper
