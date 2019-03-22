@@ -273,7 +273,7 @@ public class RadarDataActivity extends Activity {
     {
         graph.getViewport().setYAxisBoundsManual(true);
         graph.getViewport().setMinY(0);
-        graph.getViewport().setMaxY(42);
+        graph.getViewport().setMaxY(10);
 
         graph.getViewport().setXAxisBoundsManual(true);
         graph.getViewport().setMinX(0);
@@ -345,28 +345,31 @@ public class RadarDataActivity extends Activity {
 
     private void displayData(String data) {
         if (data != null) {
+            String dir="";
+
             mDataField.setText(data);
-
-            String[] tokens = data.split("=");
-
-            if(tokens[0].equals("speed"))
+            String[] tokens = data.split(",");
+            if("@".equals(tokens[0]))
             {
-                mSpeedField.setText("current speed :"+tryParseDouble(tokens[1])/100.0);
-                mDirectionField.setText("direction:"+tokens[2]);
+                mSpeedField.setText("current speed :"+tryParseDouble(tokens[2])/100.0);
 
-                mSpeedNum = tryParseDouble(tokens[1])/100.0;
+                if("a".equals(tokens[1]))
+                    dir = "apart";
+                else if("b".equals(tokens[1]))
+                    dir="depart";
+                else if("c".equals(tokens[1]))
+                    dir="no detect";
+
+                mDirectionField.setText("direction:"+dir);
+                mSpeedNum = tryParseDouble(tokens[2])/100.0;
 
                 if (mSpeedNum >= seekbar_progress)
-                {
-                    //https://txlong-onz.iteye.com/blog/1249609
                     mSpeedField.setTextColor(Color.rgb(255, 0, 0));
-                }
                 else
-                {
                     mSpeedField.setTextColor(Color.rgb(0, 255, 120));
-                }
-
             }
+
+
         }
     }
 
