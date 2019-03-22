@@ -181,20 +181,42 @@ public class NotificationService extends Service {
 
     public void bleSpeedCompare(String s, int speedThershold)
     {
-        String[] tokens = s.split("=");
+        /**
+         * String[] tokens = s.split("=");
+         *
+         *         if(tokens[0].equals("speed"))
+         *         {
+         *             mSpeedNum = tryParseDouble(tokens[1])/100.0;
+         *             mDirection = tokens[2];
+         *         }
+         *
+         *         if(mSpeedThers<= mSpeedNum)
+         *         {
+         *             showNotification("Speed Over Warning!","speed:"+
+         *                     String.valueOf(mSpeedNum)+"km/h"+" "+"thers:"+
+         *                     String.valueOf(speedThershold)+" "+"direction:"+mDirection);
+         *         }
+         * */
 
-        if(tokens[0].equals("speed"))
+        String[] tokens = s.split(",");
+        if(tokens[0].equals("@"))
         {
-            mSpeedNum = tryParseDouble(tokens[1])/100.0;
-            mDirection = tokens[2];
+            mSpeedNum = tryParseDouble(tokens[2])/100.0;
+            if("a".equals(tokens[1]))
+                mDirection = "apart";
+            else if("b".equals(tokens[1]))
+                mDirection="depart";
+            else if("c".equals(tokens[1]))
+                mDirection="no detect";
         }
 
         if(mSpeedThers<= mSpeedNum)
         {
             showNotification("Speed Over Warning!","speed:"+
-                    String.valueOf(mSpeedNum)+"km/h"+" "+"thers:"+
-                    String.valueOf(speedThershold)+" "+"direction:"+mDirection);
+                                         String.valueOf(mSpeedNum)+"km/h"+" "+"thers:"+
+                             String.valueOf(speedThershold)+" "+"direction:"+mDirection);
         }
+
     }
 
 
