@@ -30,3 +30,9 @@ Give an example
 - radar data activity has ble service broadcast receiver
 - notification has broadcast receiver to filter radar data activity & ble service
 ```
+
+
+update
+-
+1. 2019-3-22 data format for Radar_doppler_ble_v0.hex
+2. data received from Wanshih Doppler_L_V1 EVB
